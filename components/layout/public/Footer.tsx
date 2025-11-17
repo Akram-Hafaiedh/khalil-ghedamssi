@@ -1,6 +1,4 @@
 // components/layout/public/Footer.tsx
-
-import Newsletter from "@/components/ui/NewsLetter";
 import { ArrowRight, Clock, Facebook, Heart, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Link from "next/link";
 
@@ -143,9 +141,21 @@ export default function PublicFooter() {
                 <div className="border-t border-white/10 pt-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                         <p className="text-slate-400 text-sm">
-                            © {currentYear} PhysioExpert. Tous droits réservés. Conçu avec{' '}
-                            <Heart className="inline w-4 h-4 text-pink-500" /> à Tunis
+                            © {currentYear} PhysioExpert. Tous droits réservés.
                         </p>
+                        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-gray-400 text-sm">
+                            <span>Conçu avec</span>
+                            <Heart className="inline w-4 h-4 text-pink-500" />
+                            <span>par</span>
+                            <a
+                                href="https://portfolio-six-mu-c3zpt9l3gd.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 transition-colors font-medium bg-blue-500/10 px-3 py-1 rounded-full hover:bg-blue-500/20"
+                            >
+                                Akram Hafaiedh
+                            </a>
+                        </div>
 
                         <div className="flex items-center space-x-3">
                             <Link
