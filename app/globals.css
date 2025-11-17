@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  /* Define your custom primary colors */
+  --color-blue-50: #eff6ff;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+
+  --animate-gradient: gradient 3s ease infinite;
+  --animate-fadeInUp: fadeInUp 0.6s ease-out forwards;
+
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
