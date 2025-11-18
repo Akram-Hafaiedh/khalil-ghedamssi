@@ -294,6 +294,7 @@ export default function AboutPage() {
                                 </div>
                             ))}
                         </div>
+                        
 
                         {/* Additional Help */}
                         <div className="text-center mt-12">
