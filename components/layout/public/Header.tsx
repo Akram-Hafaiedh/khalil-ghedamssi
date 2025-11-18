@@ -92,8 +92,8 @@ export default function PublicHeader() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-violet-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <a
-              href="/contact"
+            <Link
+              href="/booking"
               className="group relative px-6 py-3 bg-linear-to-r from-violet-600 to-cyan-600 rounded-xl font-bold shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
             >
               <span className="relative z-10 flex items-center space-x-2">
@@ -101,7 +101,7 @@ export default function PublicHeader() {
                 <span>Rendez-vous</span>
               </span>
               <div className="absolute inset-0 bg-linear-to-r from-cyan-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,13 +127,13 @@ export default function PublicHeader() {
                   {item.name}
                 </a>
               ))}
-              <a
-                href="/contact"
+              <Link
+                href="/booking"
                 className="bg-linear-to-r from-violet-600 to-cyan-600 text-white px-6 py-4 rounded-xl hover:from-violet-700 hover:to-cyan-700 transition-all text-center font-bold shadow-lg mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Prendre Rendez-vous
-              </a>
+              </Link>
             </div>
           </div>
         )}
