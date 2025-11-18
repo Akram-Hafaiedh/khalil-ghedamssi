@@ -66,10 +66,10 @@ export default function AboutPage() {
 
             <div className="relative z-10">
                 {/* Hero Section */}
-                <section className="mt-10 relative min-h-screen flex items-center justify-center px-4 py-20">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
+                <section className="mt-6 relative min-h-screen flex items-center justify-center px-4 py-20">
+                    {/* <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
                     <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000" />
-                    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" />
+                    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" /> */}
                     <div className="max-w-7xl mx-auto text-center">
                         <div className="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-xl px-6 py-3 rounded-full mb-8 border border-white/10">
                             <Sparkles className="w-4 h-4 text-amber-400" />
@@ -294,7 +294,7 @@ export default function AboutPage() {
                                 </div>
                             ))}
                         </div>
-                        
+
 
                         {/* Additional Help */}
                         <div className="text-center mt-12">

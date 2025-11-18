@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Star, Users, Award, Clock, Sparkles, Zap, Heart, Target, TrendingUp } from 'lucide-react';
 import NewsLetter from '@/components/ui/NewsLetter';
+import Link from 'next/link';
 
 export default function StunningHomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -92,9 +93,9 @@ export default function StunningHomePage() {
         {/* Hero Section */}
         <section className="mt-28 relative min-h-screen flex items-center justify-center px-4 py-20">
           {/* Floating Orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
+          {/* <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" />
+          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" /> */}
 
           <div className="max-w-7xl mx-auto text-center relative">
             {/* Badge */}
@@ -126,15 +127,16 @@ export default function StunningHomePage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-              <button
-                type="button"
-                className="group relative px-8 py-5 bg-linear-to-r from-violet-600 to-cyan-600 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 transform hover:scale-105">
+              <Link
+                href="/booking"
+                className="group relative inline-flex items-center px-8 py-5 bg-linear-to-r from-violet-600 to-cyan-600 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              >
                 <span className="relative z-10 flex items-center space-x-2">
                   <Sparkles className="w-5 h-5" />
                   <span>Réserver Maintenant</span>
                 </span>
                 <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-cyan-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity blur" />
-              </button>
+              </Link>
 
               <button
                 type="button"
@@ -414,7 +416,9 @@ export default function StunningHomePage() {
                     </span>
                   </button>
 
-                  <button className="px-10 py-6 backdrop-blur-xl bg-white/10 border-2 border-white/30 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all duration-300">
+                  <button
+                    type="button"
+                    className="px-10 py-6 backdrop-blur-xl bg-white/10 border-2 border-white/30 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all duration-300">
                     <span className="flex items-center space-x-2">
                       <Clock className="w-5 h-5" />
                       <span>Appeler: +216 12 345 678</span>

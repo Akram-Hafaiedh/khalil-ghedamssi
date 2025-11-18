@@ -135,9 +135,9 @@ export default function ContactPage() {
 
             <div className="relative z-10">
                 <section className="mt-28 relative min-h-screen flex items-center justify-center px-4 py-20">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
+                    {/* <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
                     <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000" />
-                    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" />
+                    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse delay-500" /> */}
 
 
                     <div className="max-w-7xl mx-auto text-center relative z-10">

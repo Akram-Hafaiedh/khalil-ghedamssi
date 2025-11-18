@@ -15,7 +15,7 @@ export default function NewsLetter() {
     };
 
     return (
-        <section className="container mx-auto px-4">
+        <section className="container max-w-7xl mx-auto px-4">
             <div className="mb-16">
                 <div className="backdrop-blur-xl bg-linear-to-br from-violet-500/10 to-cyan-500/10 border border-white/10 rounded-3xl p-8 md:p-12">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
