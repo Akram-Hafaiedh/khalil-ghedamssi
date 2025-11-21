@@ -81,7 +81,7 @@ export default function PublicHeader() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-4">
             {navigation.map((item) => (
               <a
                 key={item.name}
@@ -92,6 +92,20 @@ export default function PublicHeader() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-violet-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
+            <Link
+              href="/login"
+              className="relative text-slate-300 hover:text-white font-medium transition-colors group"
+            >
+              Se connecter
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-violet-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
+            </Link>
+            <Link
+              href="/register"
+              className="relative text-slate-300 hover:text-white font-medium transition-colors group"
+            >
+              S'inscrire
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-violet-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
+            </Link>
             <Link
               href="/booking"
               className="group relative px-6 py-3 bg-linear-to-r from-violet-600 to-cyan-600 rounded-xl font-bold shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
@@ -107,7 +121,7 @@ export default function PublicHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            className="xl:hidden p-2 rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
           >
             {isMenuOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
           </button>
@@ -115,7 +129,7 @@ export default function PublicHeader() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-6 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl">
+          <div className="xl:hidden mt-6 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl">
             <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <a
@@ -127,6 +141,22 @@ export default function PublicHeader() {
                   {item.name}
                 </a>
               ))}
+
+              <Link
+                href="/login"
+                className="text-slate-300 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-all border border-transparent hover:border-white/20"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Se connecter
+              </Link>
+              <Link
+                href="/register"
+                className="text-slate-300 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-all border border-transparent hover:border-white/20"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                S'inscrire
+              </Link>
+
               <Link
                 href="/booking"
                 className="bg-linear-to-r from-violet-600 to-cyan-600 text-white px-6 py-4 rounded-xl hover:from-violet-700 hover:to-cyan-700 transition-all text-center font-bold shadow-lg mt-4"

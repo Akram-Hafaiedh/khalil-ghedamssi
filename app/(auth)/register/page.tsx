@@ -80,8 +80,12 @@ export default function RegisterPage() {
                 }
             }, 1500);
 
-        } catch (error: any) {
-            setError(error.message || 'Une erreur est survenue lors de l\'inscription');
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError('Une erreur est survenue lors de l\'inscription');
+            }
         } finally {
             setLoading(false);
         }

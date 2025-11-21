@@ -1,4 +1,5 @@
-import { Sparkles, CheckCircle, Shield, Heart } from 'lucide-react';
+import { Sparkles, CheckCircle, Shield, Heart, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="min-h-screen bg-slate-950 text-white overflow-hidden flex items-center justify-center p-4">
@@ -11,6 +12,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             </div> */}
 
             <div className="relative z-10 w-full max-w-6xl">
+                <Link
+                    href="/"
+                    className="absolute top-0 left-0 text-slate-400 hover:text-white transition-colors flex items-center space-x-2 group p-2 rounded-xl"
+                >
+                    <ArrowLeft size={18} />
+                    <span className="font-semibold text-sm">Retour à l'accueil</span>
+                </Link>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Side - Branding (shown on desktop only) */}
                     <div className="hidden lg:block">
