@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, Clock, User, Phone, Mail, MapPin, CheckCircle, Shield, Sparkles, ArrowRight, Star, Zap, Heart, Target, Footprints, Brain } from 'lucide-react';
+import { Clock, User, Phone, Mail, MapPin, CheckCircle, Shield, Sparkles, ArrowRight, Star, Zap, Heart, Target, Footprints, Brain } from 'lucide-react';
 
 export default function BookingPage() {
     const [selectedService, setSelectedService] = useState('');
