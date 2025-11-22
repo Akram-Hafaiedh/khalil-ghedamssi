@@ -1,3 +1,4 @@
+//lib/jwt.ts
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken"
 
 const JWT_SECRET = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET!

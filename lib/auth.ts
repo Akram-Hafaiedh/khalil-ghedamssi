@@ -4,14 +4,51 @@ import FacebookProvider from "next-auth/providers/facebook"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { compare } from "bcryptjs";
 import { signToken } from "./jwt"
+import prisma from "./prisma";
 
-// This is a mock function - replace with your actual database query
 async function getUserByEmail(email: string) {
-    // Replace with your database query
-    // Example: return await prisma.user.findUnique({ where: { email } })
-    return null
+    try {
+        const user = await prisma.user.findUnique({
+            where: { email },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                hashedPassword: true,
+                image: true,
+            },
+        })
+        return user
+    } catch (error) {
+        console.error("Error fetching user:", error)
+        return null
+    }
 }
 
+async function upsertUser(data: {
+    email: string
+    name?: string | null
+    image?: string | null
+}) {
+    try {
+        const user = await prisma.user.upsert({
+            where: { email: data.email },
+            update: {
+                name: data.name,
+                image: data.image,
+            },
+            create: {
+                email: data.email,
+                name: data.name,
+                image: data.image,
+            },
+        })
+        return user
+    } catch (error) {
+        console.error("Error upserting user:", error)
+        return null
+    }
+}
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -56,14 +93,14 @@ export const authOptions: NextAuthOptions = {
                 return {
                     id: user.id,
                     email: user.email,
-                    name: user.name,
+                    name: user.name ?? undefined,
+                    image: user.image ?? undefined,
                 }
             },
         }),
     ],
     callbacks: {
         async jwt({ token, user, account }) {
-
             // Add user info to token on sign in
             if (user) {
                 token.id = user.id
@@ -96,15 +133,50 @@ export const authOptions: NextAuthOptions = {
             return session
         },
         async signIn({ user, account, profile }) {
-            // Custom sign-in logic
-            // You can check if user exists in database and create if not
-            // Example:
-            // const existingUser = await getUserByEmail(user.email)
-            // if (!existingUser) {
-            //   await createUser(user)
-            // }
 
-            return true // Return false to deny sign-in
+            if (account?.provider === "google" || account?.provider === "facebook") {
+                const dbUser = await upsertUser({
+                    email: user.email!,
+                    name: user.name,
+                    image: user.image,
+                })
+                if (dbUser && profile) {
+                    try {
+                        await prisma.account.upsert({
+                            where: {
+                                provider_providerAccountId: {
+                                    provider: account.provider,
+                                    providerAccountId: account.providerAccountId,
+                                },
+                            },
+                            update: {
+                                access_token: account.access_token,
+                                refresh_token: account.refresh_token,
+                                expires_at: account.expires_at,
+                            },
+                            create: {
+                                userId: dbUser.id,
+                                type: account.type,
+                                provider: account.provider,
+                                providerAccountId: account.providerAccountId,
+                                access_token: account.access_token,
+                                refresh_token: account.refresh_token,
+                                expires_at: account.expires_at,
+                                token_type: account.token_type,
+                                scope: account.scope,
+                                id_token: account.id_token,
+                                session_state: account.session_state,
+                            },
+                        })
+                    } catch (error) {
+                        console.error("Error creating account:", error)
+                    }
+                }
+                return !!dbUser
+            }
+
+
+            return true
         },
     },
     pages: {
