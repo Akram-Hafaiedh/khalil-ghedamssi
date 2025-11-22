@@ -1,7 +1,7 @@
 // app/(auth)/login/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -10,7 +10,13 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle, CheckCircle, Heart } 
 export default function LoginPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+    const [callbackUrl, setCallbackUrl] = useState('/dashboard');
+
+
+    useEffect(() => {
+        const url = searchParams.get('callbackUrl') || '/dashboard';
+        setCallbackUrl(url);
+    }, [searchParams]);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
