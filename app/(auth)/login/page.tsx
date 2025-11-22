@@ -1,7 +1,6 @@
 export const dynamic = 'force-dynamic';
-// app/(auth)/login/page.tsx
-'use client';
 
+'use client';
 
 import { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
@@ -13,7 +12,6 @@ export default function LoginPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [callbackUrl, setCallbackUrl] = useState('/dashboard');
-
 
     useEffect(() => {
         const url = searchParams.get('callbackUrl') || '/dashboard';
