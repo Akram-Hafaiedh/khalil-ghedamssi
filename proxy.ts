@@ -1,4 +1,4 @@
-// middleware.ts (in root directory)
+// proxy.ts (in root directory)
 import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
 
@@ -12,6 +12,16 @@ export default withAuth(
     function middleware(req) {
         const token = req.nextauth.token;
         const pathname = req.nextUrl.pathname;
+
+        if (pathname === "/") {
+            if (token) {
+                // Logged in users go to dashboard
+                return NextResponse.redirect(new URL("/dashboard", req.url));
+            } else {
+                // Not logged in users go to login
+                return NextResponse.redirect(new URL("/login", req.url));
+            }
+        }
 
         const isProtected = protectedRoutes.some((route) =>
             pathname.startsWith(route)

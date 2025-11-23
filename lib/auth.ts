@@ -1,3 +1,4 @@
+//lib/auth.ts
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
 import FacebookProvider from "next-auth/providers/facebook"
@@ -180,11 +181,17 @@ export const authOptions: NextAuthOptions = {
             if (url.includes("/login")) {
                 return baseUrl + "/dashboard"
             }
-
             if (url.startsWith("/")) {
                 return `${baseUrl}${url}`
             }
-            else if (new URL(url).origin === baseUrl) return url;
+
+            try {
+                const urlObj = new URL(url);
+                if (urlObj.origin === baseUrl) {
+                    return url;
+                }
+            } catch { }
+
             return baseUrl + '/dashboard';
         },
     },
