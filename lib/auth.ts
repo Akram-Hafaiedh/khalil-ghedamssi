@@ -174,9 +174,18 @@ export const authOptions: NextAuthOptions = {
                 }
                 return !!dbUser
             }
-
-
             return true
+        },
+        async redirect({ url, baseUrl }) {
+            if (url.includes("/login")) {
+                return baseUrl + "/dashboard"
+            }
+
+            if (url.startsWith("/")) {
+                return `${baseUrl}${url}`
+            }
+            else if (new URL(url).origin === baseUrl) return url;
+            return baseUrl + '/dashboard';
         },
     },
     pages: {

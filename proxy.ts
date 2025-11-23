@@ -19,12 +19,12 @@ export default withAuth(
 
         // If route is protected and no token, redirect to login
         if (isProtected && !token) {
-            return NextResponse.redirect(
-                new URL(
-                    `/login?callbackUrl=${encodeURIComponent(pathname)}`,
-                    req.url
-                )
-            );
+
+            const loginUrl = new URL("/login", req.url);
+            if (pathname !== "/login") {
+                loginUrl.searchParams.set("callbackUrl", pathname);
+            }
+            return NextResponse.redirect(loginUrl);
         }
 
         // Redirect authenticated users away from auth pages
