@@ -1,4 +1,4 @@
-// proxy.ts (in root directory)
+// proxy.ts (middleware.ts)
 import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
 
@@ -29,11 +29,8 @@ export default withAuth(
 
         // If route is protected and no token, redirect to login
         if (isProtected && !token) {
-
             const loginUrl = new URL("/login", req.url);
-            if (pathname !== "/login") {
-                loginUrl.searchParams.set("callbackUrl", pathname);
-            }
+            loginUrl.searchParams.set("callbackUrl", pathname);
             return NextResponse.redirect(loginUrl);
         }
 
@@ -42,26 +39,32 @@ export default withAuth(
             return NextResponse.redirect(new URL("/dashboard", req.url));
         }
 
-        // Custom middleware logic here
         console.log("Token:", req.nextauth.token)
         return NextResponse.next()
     },
     {
         callbacks: {
-            authorized: ({ token }) => !!token,
+            authorized: ({ token, req }) => {
+                const pathname = req.nextUrl.pathname;
+
+                // Allow unauthenticated access to login, register, and home
+                if (pathname === "/" || pathname === "/login" || pathname === "/register") {
+                    return true;
+                }
+
+                // For protected routes, require authentication
+                const isProtected = protectedRoutes.some((route) =>
+                    pathname.startsWith(route)
+                );
+
+                return !isProtected || !!token;
+            },
         },
     }
 )
 
 export const config = {
     matcher: [
-        /*
-         * Match all request paths except for the ones starting with:
-         * - _next/static (static files)
-         * - _next/image (image optimization files)
-         * - favicon.ico (favicon file)
-         * - public folder
-         */
         "/((?!_next/static|_next/image|favicon.ico|public).*)",
     ],
 };
