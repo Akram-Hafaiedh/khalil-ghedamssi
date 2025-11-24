@@ -4,10 +4,10 @@ import { PrismaClient } from '../prisma/generated/prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
 
-const connectionString = process.env.KHALIL_DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-    throw new Error("KHALIL_DATABASE_URL environment variable is not set.");
+    throw new Error("DATABASE_URL environment variable is not set.");
 }
 
 const pool = new Pool({ connectionString });

@@ -3,10 +3,10 @@ import { Pool } from 'pg';
 import { PrismaClient } from "./generated/prisma/client"
 import { PrismaPg } from '@prisma/adapter-pg';
 
-const connectionString = process.env.KHALIL_DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-    throw new Error("Missing KHALIL_DATABASE_URL for seeding.");
+    throw new Error("Missing DATABASE_URL for seeding.");
 }
 
 const pool = new Pool({ connectionString });

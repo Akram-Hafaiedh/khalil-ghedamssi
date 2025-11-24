@@ -6,6 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { compare } from "bcryptjs";
 import { signToken } from "./jwt"
 import prisma from "./prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 
 async function getUserByEmail(email: string) {
     try {
@@ -52,6 +53,7 @@ async function upsertUser(data: {
 }
 
 export const authOptions: NextAuthOptions = {
+    adapter: PrismaAdapter(prisma),
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -141,6 +143,7 @@ export const authOptions: NextAuthOptions = {
                     name: user.name,
                     image: user.image,
                 })
+                console.log('User upserted:', dbUser)
                 if (dbUser && profile) {
                     try {
                         await prisma.account.upsert({

@@ -4,6 +4,11 @@ const MIN_NAME_LENGTH = 2;
 
 import { z } from "zod";
 
+export const LoginSchema = z.object({
+    email: z.email("Adresse email invalide").toLowerCase(),
+    password: z.string().min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+});
+
 export const RegistrationSchema = z.object({
     // 1. Name Validation
     name: z
@@ -13,12 +18,12 @@ export const RegistrationSchema = z.object({
 
     // 2. Email Validation
     email: z
-        .email("Invalid email format")
+        .email({ message: "Invalid email format" })
         .toLowerCase(),
 
     // 3. Password Validation (using refine for custom checks)
     password: z
-        .string()
+        .string({ message: "Password is required" })
         .min(MIN_PASSWORD_LENGTH, { message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters` })
         .refine((val) => /[A-Z]/.test(val), {
             message: "Password must contain at least one uppercase letter",
@@ -32,3 +37,4 @@ export const RegistrationSchema = z.object({
 });
 
 export type RegistrationInput = z.infer<typeof RegistrationSchema>;
+export type LoginInput = z.infer<typeof LoginSchema>;
