@@ -82,13 +82,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 <div className="text-center mt-12">
                     <p className="text-slate-500 text-sm">
                         En continuant, vous acceptez nos{' '}
-                        <a href="#" className="text-slate-400 hover:text-slate-300 transition-colors underline">
+                        <Link href="/terms" className="text-slate-400 hover:text-slate-300 transition-colors underline">
                             Conditions d'utilisation
-                        </a>
+                        </Link>
                         {' '}et notre{' '}
-                        <a href="#" className="text-slate-400 hover:text-slate-300 transition-colors underline">
+                        <Link href="/privacy" className="text-slate-400 hover:text-slate-300 transition-colors underline">
                             Politique de confidentialité
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

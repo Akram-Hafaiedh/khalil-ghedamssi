@@ -1,5 +1,5 @@
-// components/layout/public/Footer.tsx
-import { ArrowRight, Clock, Facebook, Heart, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+// components/layout/public/Footer.tsx (updated)
+import { ArrowRight, Clock, Facebook, Heart, Instagram, Mail, MapPin, Phone, Twitter, Scale, Lock } from "lucide-react";
 import Link from "next/link";
 
 export default function PublicFooter() {
@@ -19,6 +19,11 @@ export default function PublicFooter() {
         { name: 'À Propos', href: '/about' },
         { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' }
+    ];
+
+    const legalLinks = [
+        { name: 'Conditions d\'Utilisation', href: '/terms', icon: Scale },
+        { name: 'Politique de Confidentialité', href: '/policy', icon: Lock }
     ];
 
     return (
@@ -117,9 +122,30 @@ export default function PublicFooter() {
                         </ul>
                     </div>
 
-                    {/* Services */}
+                    {/* Legal Links */}
                     <div>
                         <h4 className="text-lg font-bold mb-6 bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                            Informations Légales
+                        </h4>
+                        <ul className="space-y-3">
+                            {legalLinks.map((item) => {
+                                const IconComponent = item.icon;
+                                return (
+                                    <li key={item.name}>
+                                        <a
+                                            href={item.href}
+                                            className="group flex items-center space-x-3 text-slate-400 hover:text-white transition-all"
+                                        >
+                                            <IconComponent size={16} className="text-cyan-400" />
+                                            <span>{item.name}</span>
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+
+                        {/* Services */}
+                        <h4 className="text-lg font-bold mt-8 mb-6 bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent">
                             Nos Services
                         </h4>
                         <ul className="space-y-3">
@@ -137,12 +163,14 @@ export default function PublicFooter() {
                         </ul>
                     </div>
                 </div>
+
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 pt-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                         <p className="text-slate-400 text-sm">
                             © {currentYear} PhysioExpert. Tous droits réservés.
                         </p>
+                        
                         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-gray-400 text-sm">
                             <span>Conçu avec</span>
                             <Heart className="inline w-4 h-4 text-pink-500" />
