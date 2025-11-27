@@ -387,7 +387,8 @@ export const ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  DeletionConfirmation: 'DeletionConfirmation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "deletionConfirmation"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +704,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    DeletionConfirmation: {
+      payload: Prisma.$DeletionConfirmationPayload<ExtArgs>
+      fields: Prisma.DeletionConfirmationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DeletionConfirmationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DeletionConfirmationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        findFirst: {
+          args: Prisma.DeletionConfirmationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DeletionConfirmationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        findMany: {
+          args: Prisma.DeletionConfirmationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>[]
+        }
+        create: {
+          args: Prisma.DeletionConfirmationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        createMany: {
+          args: Prisma.DeletionConfirmationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DeletionConfirmationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>[]
+        }
+        delete: {
+          args: Prisma.DeletionConfirmationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        update: {
+          args: Prisma.DeletionConfirmationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        deleteMany: {
+          args: Prisma.DeletionConfirmationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DeletionConfirmationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DeletionConfirmationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>[]
+        }
+        upsert: {
+          args: Prisma.DeletionConfirmationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeletionConfirmationPayload>
+        }
+        aggregate: {
+          args: Prisma.DeletionConfirmationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDeletionConfirmation>
+        }
+        groupBy: {
+          args: Prisma.DeletionConfirmationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeletionConfirmationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DeletionConfirmationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeletionConfirmationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -791,6 +866,20 @@ export const VerificationTokenScalarFieldEnum = {
 } as const
 
 export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+export const DeletionConfirmationScalarFieldEnum = {
+  id: 'id',
+  confirmationCode: 'confirmationCode',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  userId: 'userId',
+  status: 'status',
+  requestedAt: 'requestedAt',
+  completedAt: 'completedAt'
+} as const
+
+export type DeletionConfirmationScalarFieldEnum = (typeof DeletionConfirmationScalarFieldEnum)[keyof typeof DeletionConfirmationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -961,6 +1050,7 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   session?: Prisma.SessionOmit
   verificationToken?: Prisma.VerificationTokenOmit
+  deletionConfirmation?: Prisma.DeletionConfirmationOmit
 }
 
 /* Types for Logging */

@@ -54,7 +54,8 @@ export const ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  DeletionConfirmation: 'DeletionConfirmation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -122,6 +123,20 @@ export const VerificationTokenScalarFieldEnum = {
 } as const
 
 export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+export const DeletionConfirmationScalarFieldEnum = {
+  id: 'id',
+  confirmationCode: 'confirmationCode',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  userId: 'userId',
+  status: 'status',
+  requestedAt: 'requestedAt',
+  completedAt: 'completedAt'
+} as const
+
+export type DeletionConfirmationScalarFieldEnum = (typeof DeletionConfirmationScalarFieldEnum)[keyof typeof DeletionConfirmationScalarFieldEnum]
 
 
 export const SortOrder = {

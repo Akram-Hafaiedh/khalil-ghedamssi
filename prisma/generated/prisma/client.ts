@@ -59,3 +59,8 @@ export type Session = Prisma.SessionModel
  * 
  */
 export type VerificationToken = Prisma.VerificationTokenModel
+/**
+ * Model DeletionConfirmation
+ * 
+ */
+export type DeletionConfirmation = Prisma.DeletionConfirmationModel

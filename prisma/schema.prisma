@@ -17,6 +17,7 @@ model User {
   hashedPassword String?
   accounts      Account[]
   sessions      Session[]
+  deletionConfirmations DeletionConfirmation[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
@@ -54,4 +55,19 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+
+model DeletionConfirmation {
+  id                 String   @id @default(cuid())
+  confirmationCode   String   @unique
+  provider           String
+  providerAccountId  String
+  userId             String
+  status             String   @default("pending") // pending, completed, failed
+  requestedAt        DateTime @default(now())
+  completedAt        DateTime?
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([provider, providerAccountId])
 }
