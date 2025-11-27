@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: 'PhysioExpert - Kinésithérapeute à Tunis',
   description: 'Cabinet de kinésithérapie à Tunis. Rééducation fonctionnelle, thérapie manuelle, kinésithérapie sportive.',
   keywords: 'kinésithérapie, physiothérapie, Tunis, rééducation, thérapie manuelle',
+  appleWebApp: {
+    title: 'PhysioExpert - Kinésithérapeute à Tunis',
+    statusBarStyle: 'black',
+    startupImage: '/web-app-manifest-192x192.png',
+  },
 };
 
 
@@ -32,8 +37,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-        <Analytics />
-        {children}
+          <Analytics />
+          {children}
         </Providers>
       </body>
     </html>
