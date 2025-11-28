@@ -2,6 +2,7 @@
 'use client';
 
 import { Shield, FileText, AlertCircle, CheckCircle, ArrowRight, Sparkles, Scale } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function TermsPage() {
@@ -153,18 +154,18 @@ export default function TermsPage() {
                                                 n&apos;hésitez pas à nous contacter.
                                             </p>
                                             <div className="space-y-3">
-                                                <a
+                                                <Link
                                                     href="/contact"
                                                     className="block w-full text-center px-6 py-3 bg-linear-to-r from-violet-600 to-cyan-600 rounded-xl font-semibold hover:shadow-violet-500/50 transition-all duration-300"
                                                 >
                                                     Nous Contacter
-                                                </a>
-                                                <a
+                                                </Link>
+                                                <Link
                                                     href="/policy"
                                                     className="block w-full text-center px-6 py-3 backdrop-blur-xl bg-white/5 border border-white/20 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300"
                                                 >
                                                     Politique de Confidentialité
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

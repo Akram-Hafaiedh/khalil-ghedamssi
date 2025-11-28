@@ -288,13 +288,13 @@ export default function RegisterPage() {
                     />
                     <label className="text-sm text-slate-400">
                         J'accepte les{' '}
-                        <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors underline">
+                        <Link href="/terms" className="text-violet-400 hover:text-violet-300 transition-colors underline">
                             conditions d'utilisation
-                        </a>
+                        </Link>
                         {' '}et la{' '}
-                        <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors underline">
+                        <Link href="/policy" className="text-cyan-400 hover:text-cyan-300 transition-colors underline">
                             politique de confidentialité
-                        </a>
+                        </Link>
                     </label>
                 </div>
 

@@ -1,27 +1,22 @@
 import { Sparkles, CheckCircle, Shield, Heart, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="min-h-screen bg-slate-950 text-white overflow-hidden flex items-center justify-center p-4">
-            {/* Background Effects */}
-            {/* <div className="fixed inset-0 z-0">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-500 rounded-full filter blur-3xl opacity-20 animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20" />
-            </div> */}
+            {/* Fixed Back Button - Top Left */}
+            <a
+                href="/"
+                className="fixed top-6 left-6 z-50 inline-flex items-center space-x-2 text-slate-400 hover:text-white transition-colors group backdrop-blur-xl bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:bg-white/10"
+            >
+                <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                <span className="font-semibold text-sm">Retour à l'accueil</span>
+            </a>
 
             <div className="relative z-10 w-full max-w-6xl">
-                <Link
-                    href="/"
-                    className="absolute top-0 left-0 text-slate-400 hover:text-white transition-colors flex items-center space-x-2 group p-2 rounded-xl"
-                >
-                    <ArrowLeft size={18} />
-                    <span className="font-semibold text-sm">Retour à l'accueil</span>
-                </Link>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Side - Branding (shown on desktop only) */}
-                    <div className="hidden lg:block">
+                    <div className="hidden lg:block lg:sticky lg:top-8">
                         <div className="space-y-8">
                             {/* Logo */}
                             <div className="flex items-center space-x-3">
@@ -75,7 +70,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                     </div>
 
                     {/* Right Side - Content from children */}
-                    {children}
+                    <div className="w-full">
+                        {children}
+                    </div>
                 </div>
 
                 {/* Bottom Note */}
