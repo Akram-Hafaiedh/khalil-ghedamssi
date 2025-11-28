@@ -165,10 +165,10 @@ export async function POST(request: NextRequest, { params }: { params: { provide
             );
             try {
                 await sendAccountRecoveryEmail(
+                    account.user.email,
                     account.user.name,
                     account.provider,
                     deletionDate,
-                    daysRemaining,
                     recoveryToken
                 );
             } catch (emailError) {

@@ -28,7 +28,7 @@ async function getUserByEmail(email: string) {
 
 async function upsertUser(data: {
     email: string
-    name?: string | null
+    name: string
     image?: string | null
 }) {
     try {
@@ -127,6 +127,7 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token && session.user) {
                 session.user.id = token.id as string
+                session.user.name = token.name as string
                 session.user.provider = token.provider as string
                 session.accessToken = token.accessToken as string
                 session.customJWT = token.customJWT as string
