@@ -30,12 +30,14 @@ export type UserMinAggregateOutputType = {
   email: string | null
   emailVerified: Date | null
   image: string | null
+  role: $Enums.UserRole | null
   hashedPassword: string | null
   lockedAt: Date | null
   lockedReason: string | null
   scheduledDeletionAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -44,12 +46,14 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   emailVerified: Date | null
   image: string | null
+  role: $Enums.UserRole | null
   hashedPassword: string | null
   lockedAt: Date | null
   lockedReason: string | null
   scheduledDeletionAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -58,12 +62,14 @@ export type UserCountAggregateOutputType = {
   email: number
   emailVerified: number
   image: number
+  role: number
   hashedPassword: number
   lockedAt: number
   lockedReason: number
   scheduledDeletionAt: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -74,12 +80,14 @@ export type UserMinAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  role?: true
   hashedPassword?: true
   lockedAt?: true
   lockedReason?: true
   scheduledDeletionAt?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -88,12 +96,14 @@ export type UserMaxAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  role?: true
   hashedPassword?: true
   lockedAt?: true
   lockedReason?: true
   scheduledDeletionAt?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -102,12 +112,14 @@ export type UserCountAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  role?: true
   hashedPassword?: true
   lockedAt?: true
   lockedReason?: true
   scheduledDeletionAt?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -189,12 +201,14 @@ export type UserGroupByOutputType = {
   email: string
   emailVerified: Date | null
   image: string | null
+  role: $Enums.UserRole
   hashedPassword: string | null
   lockedAt: Date | null
   lockedReason: string | null
   scheduledDeletionAt: Date | null
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -224,15 +238,20 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   hashedPassword?: Prisma.StringNullableFilter<"User"> | string | null
   lockedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lockedReason?: Prisma.StringNullableFilter<"User"> | string | null
   scheduledDeletionAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   deletionConfirmations?: Prisma.DeletionConfirmationListRelationFilter
+  notes?: Prisma.PatientNoteListRelationFilter
+  patientNotes?: Prisma.PatientNoteListRelationFilter
+  authoredNotes?: Prisma.PatientNoteListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -241,15 +260,20 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrderInput | Prisma.SortOrder
   lockedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lockedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   scheduledDeletionAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   deletionConfirmations?: Prisma.DeletionConfirmationOrderByRelationAggregateInput
+  notes?: Prisma.PatientNoteOrderByRelationAggregateInput
+  patientNotes?: Prisma.PatientNoteOrderByRelationAggregateInput
+  authoredNotes?: Prisma.PatientNoteOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -261,15 +285,20 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"User"> | string
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   hashedPassword?: Prisma.StringNullableFilter<"User"> | string | null
   lockedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lockedReason?: Prisma.StringNullableFilter<"User"> | string | null
   scheduledDeletionAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   deletionConfirmations?: Prisma.DeletionConfirmationListRelationFilter
+  notes?: Prisma.PatientNoteListRelationFilter
+  patientNotes?: Prisma.PatientNoteListRelationFilter
+  authoredNotes?: Prisma.PatientNoteListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -278,12 +307,14 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrderInput | Prisma.SortOrder
   lockedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lockedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   scheduledDeletionAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -298,12 +329,14 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
   hashedPassword?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   lockedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   lockedReason?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   scheduledDeletionAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
 export type UserCreateInput = {
@@ -312,15 +345,20 @@ export type UserCreateInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -329,15 +367,20 @@ export type UserUncheckedCreateInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUpdateInput = {
@@ -346,15 +389,20 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -363,15 +411,20 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -380,12 +433,14 @@ export type UserCreateManyInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -394,12 +449,14 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -408,12 +465,24 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -422,12 +491,14 @@ export type UserCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   lockedAt?: Prisma.SortOrder
   lockedReason?: Prisma.SortOrder
   scheduledDeletionAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -436,12 +507,14 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   lockedAt?: Prisma.SortOrder
   lockedReason?: Prisma.SortOrder
   scheduledDeletionAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -450,33 +523,66 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   lockedAt?: Prisma.SortOrder
   lockedReason?: Prisma.SortOrder
   scheduledDeletionAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
+export type UserCreateNestedOneWithoutNotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotesInput, Prisma.UserUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotesInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserCreateNestedOneWithoutAuthoredNotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAuthoredNotesInput, Prisma.UserUncheckedCreateWithoutAuthoredNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuthoredNotesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutPatientNotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPatientNotesInput, Prisma.UserUncheckedCreateWithoutPatientNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPatientNotesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotesInput, Prisma.UserUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotesInput
+  upsert?: Prisma.UserUpsertWithoutNotesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotesInput, Prisma.UserUpdateWithoutNotesInput>, Prisma.UserUncheckedUpdateWithoutNotesInput>
+}
+
+export type UserUpdateOneRequiredWithoutAuthoredNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAuthoredNotesInput, Prisma.UserUncheckedCreateWithoutAuthoredNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuthoredNotesInput
+  upsert?: Prisma.UserUpsertWithoutAuthoredNotesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuthoredNotesInput, Prisma.UserUpdateWithoutAuthoredNotesInput>, Prisma.UserUncheckedUpdateWithoutAuthoredNotesInput>
+}
+
+export type UserUpdateOneWithoutPatientNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPatientNotesInput, Prisma.UserUncheckedCreateWithoutPatientNotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPatientNotesInput
+  upsert?: Prisma.UserUpsertWithoutPatientNotesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPatientNotesInput, Prisma.UserUpdateWithoutPatientNotesInput>, Prisma.UserUncheckedUpdateWithoutPatientNotesInput>
 }
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type EnumUserRoleFieldUpdateOperationsInput = {
+  set?: $Enums.UserRole
 }
 
 export type UserCreateNestedOneWithoutAccountsInput = {
@@ -521,20 +627,325 @@ export type UserUpdateOneRequiredWithoutDeletionConfirmationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeletionConfirmationsInput, Prisma.UserUpdateWithoutDeletionConfirmationsInput>, Prisma.UserUncheckedUpdateWithoutDeletionConfirmationsInput>
 }
 
-export type UserCreateWithoutAccountsInput = {
+export type UserCreateWithoutNotesInput = {
   id?: string
   name: string
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutNotesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutNotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotesInput, Prisma.UserUncheckedCreateWithoutNotesInput>
+}
+
+export type UserCreateWithoutAuthoredNotesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAuthoredNotesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAuthoredNotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAuthoredNotesInput, Prisma.UserUncheckedCreateWithoutAuthoredNotesInput>
+}
+
+export type UserCreateWithoutPatientNotesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutPatientNotesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutPatientNotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPatientNotesInput, Prisma.UserUncheckedCreateWithoutPatientNotesInput>
+}
+
+export type UserUpsertWithoutNotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotesInput, Prisma.UserUncheckedUpdateWithoutNotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotesInput, Prisma.UserUncheckedCreateWithoutNotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotesInput, Prisma.UserUncheckedUpdateWithoutNotesInput>
+}
+
+export type UserUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUpsertWithoutAuthoredNotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAuthoredNotesInput, Prisma.UserUncheckedUpdateWithoutAuthoredNotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAuthoredNotesInput, Prisma.UserUncheckedCreateWithoutAuthoredNotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAuthoredNotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAuthoredNotesInput, Prisma.UserUncheckedUpdateWithoutAuthoredNotesInput>
+}
+
+export type UserUpdateWithoutAuthoredNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAuthoredNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutPatientNotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPatientNotesInput, Prisma.UserUncheckedUpdateWithoutPatientNotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPatientNotesInput, Prisma.UserUncheckedCreateWithoutPatientNotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPatientNotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPatientNotesInput, Prisma.UserUncheckedUpdateWithoutPatientNotesInput>
+}
+
+export type UserUpdateWithoutPatientNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPatientNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutAccountsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -543,14 +954,19 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -575,14 +991,19 @@ export type UserUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -591,14 +1012,19 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -607,14 +1033,19 @@ export type UserCreateWithoutSessionsInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -623,14 +1054,19 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -655,14 +1091,19 @@ export type UserUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -671,14 +1112,19 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutDeletionConfirmationsInput = {
@@ -687,14 +1133,19 @@ export type UserCreateWithoutDeletionConfirmationsInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutDeletionConfirmationsInput = {
@@ -703,14 +1154,19 @@ export type UserUncheckedCreateWithoutDeletionConfirmationsInput = {
   email: string
   emailVerified?: Date | string | null
   image?: string | null
+  role?: $Enums.UserRole
   hashedPassword?: string | null
   lockedAt?: Date | string | null
   lockedReason?: string | null
   scheduledDeletionAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutDeletionConfirmationsInput = {
@@ -735,14 +1191,19 @@ export type UserUpdateWithoutDeletionConfirmationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeletionConfirmationsInput = {
@@ -751,14 +1212,19 @@ export type UserUncheckedUpdateWithoutDeletionConfirmationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 
@@ -770,12 +1236,18 @@ export type UserCountOutputType = {
   accounts: number
   sessions: number
   deletionConfirmations: number
+  notes: number
+  patientNotes: number
+  authoredNotes: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   deletionConfirmations?: boolean | UserCountOutputTypeCountDeletionConfirmationsArgs
+  notes?: boolean | UserCountOutputTypeCountNotesArgs
+  patientNotes?: boolean | UserCountOutputTypeCountPatientNotesArgs
+  authoredNotes?: boolean | UserCountOutputTypeCountAuthoredNotesArgs
 }
 
 /**
@@ -809,6 +1281,27 @@ export type UserCountOutputTypeCountDeletionConfirmationsArgs<ExtArgs extends ru
   where?: Prisma.DeletionConfirmationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PatientNoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPatientNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PatientNoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAuthoredNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PatientNoteWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -816,15 +1309,20 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  role?: boolean
   hashedPassword?: boolean
   lockedAt?: boolean
   lockedReason?: boolean
   scheduledDeletionAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   deletionConfirmations?: boolean | Prisma.User$deletionConfirmationsArgs<ExtArgs>
+  notes?: boolean | Prisma.User$notesArgs<ExtArgs>
+  patientNotes?: boolean | Prisma.User$patientNotesArgs<ExtArgs>
+  authoredNotes?: boolean | Prisma.User$authoredNotesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -834,12 +1332,14 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  role?: boolean
   hashedPassword?: boolean
   lockedAt?: boolean
   lockedReason?: boolean
   scheduledDeletionAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -848,12 +1348,14 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  role?: boolean
   hashedPassword?: boolean
   lockedAt?: boolean
   lockedReason?: boolean
   scheduledDeletionAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -862,19 +1364,24 @@ export type UserSelectScalar = {
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  role?: boolean
   hashedPassword?: boolean
   lockedAt?: boolean
   lockedReason?: boolean
   scheduledDeletionAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "hashedPassword" | "lockedAt" | "lockedReason" | "scheduledDeletionAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "hashedPassword" | "lockedAt" | "lockedReason" | "scheduledDeletionAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   deletionConfirmations?: boolean | Prisma.User$deletionConfirmationsArgs<ExtArgs>
+  notes?: boolean | Prisma.User$notesArgs<ExtArgs>
+  patientNotes?: boolean | Prisma.User$patientNotesArgs<ExtArgs>
+  authoredNotes?: boolean | Prisma.User$authoredNotesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -886,6 +1393,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     sessions: Prisma.$SessionPayload<ExtArgs>[]
     deletionConfirmations: Prisma.$DeletionConfirmationPayload<ExtArgs>[]
+    notes: Prisma.$PatientNotePayload<ExtArgs>[]
+    patientNotes: Prisma.$PatientNotePayload<ExtArgs>[]
+    authoredNotes: Prisma.$PatientNotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -893,12 +1403,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     emailVerified: Date | null
     image: string | null
+    role: $Enums.UserRole
     hashedPassword: string | null
     lockedAt: Date | null
     lockedReason: string | null
     scheduledDeletionAt: Date | null
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1296,6 +1808,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   deletionConfirmations<T extends Prisma.User$deletionConfirmationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deletionConfirmationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DeletionConfirmationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notes<T extends Prisma.User$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  patientNotes<T extends Prisma.User$patientNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$patientNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  authoredNotes<T extends Prisma.User$authoredNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$authoredNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1330,12 +1845,14 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly emailVerified: Prisma.FieldRef<"User", 'DateTime'>
   readonly image: Prisma.FieldRef<"User", 'String'>
+  readonly role: Prisma.FieldRef<"User", 'UserRole'>
   readonly hashedPassword: Prisma.FieldRef<"User", 'String'>
   readonly lockedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly lockedReason: Prisma.FieldRef<"User", 'String'>
   readonly scheduledDeletionAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -1793,6 +2310,78 @@ export type User$deletionConfirmationsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.DeletionConfirmationScalarFieldEnum | Prisma.DeletionConfirmationScalarFieldEnum[]
+}
+
+/**
+ * User.notes
+ */
+export type User$notesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PatientNote
+   */
+  select?: Prisma.PatientNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PatientNote
+   */
+  omit?: Prisma.PatientNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PatientNoteInclude<ExtArgs> | null
+  where?: Prisma.PatientNoteWhereInput
+  orderBy?: Prisma.PatientNoteOrderByWithRelationInput | Prisma.PatientNoteOrderByWithRelationInput[]
+  cursor?: Prisma.PatientNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PatientNoteScalarFieldEnum | Prisma.PatientNoteScalarFieldEnum[]
+}
+
+/**
+ * User.patientNotes
+ */
+export type User$patientNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PatientNote
+   */
+  select?: Prisma.PatientNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PatientNote
+   */
+  omit?: Prisma.PatientNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PatientNoteInclude<ExtArgs> | null
+  where?: Prisma.PatientNoteWhereInput
+  orderBy?: Prisma.PatientNoteOrderByWithRelationInput | Prisma.PatientNoteOrderByWithRelationInput[]
+  cursor?: Prisma.PatientNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PatientNoteScalarFieldEnum | Prisma.PatientNoteScalarFieldEnum[]
+}
+
+/**
+ * User.authoredNotes
+ */
+export type User$authoredNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PatientNote
+   */
+  select?: Prisma.PatientNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PatientNote
+   */
+  omit?: Prisma.PatientNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PatientNoteInclude<ExtArgs> | null
+  where?: Prisma.PatientNoteWhereInput
+  orderBy?: Prisma.PatientNoteOrderByWithRelationInput | Prisma.PatientNoteOrderByWithRelationInput[]
+  cursor?: Prisma.PatientNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PatientNoteScalarFieldEnum | Prisma.PatientNoteScalarFieldEnum[]
 }
 
 /**

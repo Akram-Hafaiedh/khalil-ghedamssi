@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  PatientNote: 'PatientNote',
   User: 'User',
   Account: 'Account',
   Session: 'Session',
@@ -74,18 +75,36 @@ export const TransactionIsolationLevel = {
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const PatientNoteScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  authorId: 'authorId',
+  title: 'title',
+  content: 'content',
+  noteType: 'noteType',
+  isPrivate: 'isPrivate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+} as const
+
+export type PatientNoteScalarFieldEnum = (typeof PatientNoteScalarFieldEnum)[keyof typeof PatientNoteScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
+  role: 'role',
   hashedPassword: 'hashedPassword',
   lockedAt: 'lockedAt',
   lockedReason: 'lockedReason',
   scheduledDeletionAt: 'scheduledDeletionAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
