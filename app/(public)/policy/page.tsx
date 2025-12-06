@@ -37,6 +37,14 @@ export default function PolicyPage() {
             content: "Vous avez le droit d'accéder à vos données, de les rectifier, de vous opposer à leur traitement, de les limiter, et de demander leur effacement dans les limites prévues par la loi. Contactez-nous pour exercer ces droits."
         },
         {
+            title: "Droit à l'Effacement des Données",
+            content: "Vous pouvez demander la suppression de votre compte et de vos données personnelles à tout moment. La suppression peut être demandée par email ou automatiquement via la suppression de l’application depuis votre compte Facebook ou Google. Lorsque des obligations légales existent, certaines données peuvent être conservées temporairement avant suppression définitive."
+        },
+        {
+            title: "Suppression de Compte et des Données (Facebook & Google)",
+            content: "Si vous utilisez Facebook ou Google pour vous connecter, vous pouvez déclencher la suppression de vos données directement depuis les paramètres de votre compte Facebook ou Google en supprimant l’application. Une demande de suppression entraîne la désactivation immédiate de l’accès et la suppression ou planification de suppression de vos données. Un lien de confirmation vous sera fourni après la demande."
+        },
+        {
             title: "Cookies et Traçage",
             content: "Nous utilisons des cookies essentiels au fonctionnement du site. Nous pouvons également utiliser des cookies analytiques pour améliorer nos services. Vous pouvez contrôler les cookies via les paramètres de votre navigateur."
         }
