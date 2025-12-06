@@ -1,3 +1,5 @@
+// app/api/oauth/[provider]/data-deletion/route.ts
+
 import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
@@ -128,10 +130,6 @@ export async function POST(request: NextRequest, { params }: { params: { provide
         if (remainingAccounts.length === 0 && !account.user.hashedPassword) {
             const deletionDate = new Date();
             deletionDate.setDate(deletionDate.getDate() + 30);
-
-            const daysRemaining = Math.ceil(
-                (deletionDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-            );
             const recoveryToken = crypto.randomBytes(32).toString('hex');
             const recoveryTokenExpiry = new Date();
             recoveryTokenExpiry.setDate(recoveryTokenExpiry.getDate() + 7);

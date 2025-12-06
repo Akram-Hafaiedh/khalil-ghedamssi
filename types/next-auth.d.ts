@@ -9,10 +9,11 @@ declare module "next-auth" {
     interface Session {
         user: {
             id: string
-            name?: string | null
-            email?: string | null
+            name: string
+            email: string
             image?: string | null
             provider?: string
+            role: string
         } & DefaultSession["user"]
         accessToken?: string
         customJWT?: string
@@ -23,6 +24,7 @@ declare module "next-auth" {
         email: string
         name: string
         image?: string
+        role: string
         hashedPassword?: string
     }
 }
@@ -32,6 +34,7 @@ declare module "next-auth/jwt" {
         id: string
         email: string
         name?: string | null
+        role: string
         provider?: string
         accessToken?: string
         customJWT?: string

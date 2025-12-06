@@ -17,6 +17,7 @@ async function getUserByEmail(email: string) {
                 name: true,
                 hashedPassword: true,
                 image: true,
+                role: true,
             },
         })
         return user
@@ -42,6 +43,15 @@ async function upsertUser(data: {
                 email: data.email,
                 name: data.name,
                 image: data.image,
+                role: "PATIENT",
+            },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                hashedPassword: true,
+                image: true,
+                role: true,
             },
         })
         return user
@@ -94,8 +104,9 @@ export const authOptions: NextAuthOptions = {
                 return {
                     id: user.id,
                     email: user.email,
-                    name: user.name ?? undefined,
+                    name: user.name,
                     image: user.image ?? undefined,
+                    role: user.role
                 }
             },
         }),
@@ -107,7 +118,7 @@ export const authOptions: NextAuthOptions = {
                 token.id = user.id
                 token.email = user.email
                 token.name = user.name
-
+                token.role = user.role
                 // Add provider info
                 if (account) {
                     token.provider = account.provider
@@ -127,6 +138,7 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token && session.user) {
                 session.user.id = token.id as string
+                session.user.role = token.role as string
                 session.user.name = token.name as string
                 session.user.provider = token.provider as string
                 session.accessToken = token.accessToken as string
