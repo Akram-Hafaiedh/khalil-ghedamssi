@@ -10,6 +10,8 @@
  */
 export type * from './models/PatientNote'
 export type * from './models/User'
+export type * from './models/UserProfile'
+export type * from './models/Notification'
 export type * from './models/Account'
 export type * from './models/Session'
 export type * from './models/VerificationToken'

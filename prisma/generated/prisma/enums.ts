@@ -29,3 +29,37 @@ export const NoteType = {
 } as const
 
 export type NoteType = (typeof NoteType)[keyof typeof NoteType]
+
+
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  OTHER: 'OTHER',
+  PREFER_NOT_TO_SAY: 'PREFER_NOT_TO_SAY'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
+export const NotificationType = {
+  INFO: 'INFO',
+  WARNING: 'WARNING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+  APPOINTMENT: 'APPOINTMENT',
+  PAYMENT: 'PAYMENT',
+  SECURITY: 'SECURITY'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const NotificationCategory = {
+  SYSTEM: 'SYSTEM',
+  APPOINTMENT: 'APPOINTMENT',
+  BILLING: 'BILLING',
+  SECURITY: 'SECURITY',
+  PROMOTIONAL: 'PROMOTIONAL'
+} as const
+
+export type NotificationCategory = (typeof NotificationCategory)[keyof typeof NotificationCategory]

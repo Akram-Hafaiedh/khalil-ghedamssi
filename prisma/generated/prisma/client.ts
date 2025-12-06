@@ -50,6 +50,16 @@ export type PatientNote = Prisma.PatientNoteModel
  */
 export type User = Prisma.UserModel
 /**
+ * Model UserProfile
+ * 
+ */
+export type UserProfile = Prisma.UserProfileModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
  * Model Account
  * 
  */

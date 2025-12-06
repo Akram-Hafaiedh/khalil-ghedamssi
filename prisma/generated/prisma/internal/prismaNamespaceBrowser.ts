@@ -53,6 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   PatientNote: 'PatientNote',
   User: 'User',
+  UserProfile: 'UserProfile',
+  Notification: 'Notification',
   Account: 'Account',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
@@ -108,6 +110,52 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  phoneNumber: 'phoneNumber',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  address: 'address',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
+  emergencyContactName: 'emergencyContactName',
+  emergencyContactPhone: 'emergencyContactPhone',
+  emergencyContactRelation: 'emergencyContactRelation',
+  medicalHistory: 'medicalHistory',
+  allergies: 'allergies',
+  currentMedications: 'currentMedications',
+  notes: 'notes',
+  preferences: 'preferences',
+  notificationSettings: 'notificationSettings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserProfileScalarFieldEnum = (typeof UserProfileScalarFieldEnum)[keyof typeof UserProfileScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  message: 'message',
+  type: 'type',
+  category: 'category',
+  read: 'read',
+  important: 'important',
+  actionUrl: 'actionUrl',
+  actionText: 'actionText',
+  metadata: 'metadata',
+  sentAt: 'sentAt',
+  readAt: 'readAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const AccountScalarFieldEnum = {
@@ -169,6 +217,14 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull'
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -183,4 +239,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull',
+  AnyNull: 'AnyNull'
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

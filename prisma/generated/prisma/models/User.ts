@@ -252,6 +252,8 @@ export type UserWhereInput = {
   notes?: Prisma.PatientNoteListRelationFilter
   patientNotes?: Prisma.PatientNoteListRelationFilter
   authoredNotes?: Prisma.PatientNoteListRelationFilter
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
+  notifications?: Prisma.NotificationListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -274,6 +276,8 @@ export type UserOrderByWithRelationInput = {
   notes?: Prisma.PatientNoteOrderByRelationAggregateInput
   patientNotes?: Prisma.PatientNoteOrderByRelationAggregateInput
   authoredNotes?: Prisma.PatientNoteOrderByRelationAggregateInput
+  userProfile?: Prisma.UserProfileOrderByWithRelationInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -299,6 +303,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   notes?: Prisma.PatientNoteListRelationFilter
   patientNotes?: Prisma.PatientNoteListRelationFilter
   authoredNotes?: Prisma.PatientNoteListRelationFilter
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
+  notifications?: Prisma.NotificationListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -359,6 +365,8 @@ export type UserCreateInput = {
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -381,6 +389,8 @@ export type UserUncheckedCreateInput = {
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -403,6 +413,8 @@ export type UserUpdateInput = {
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -425,6 +437,8 @@ export type UserUncheckedUpdateInput = {
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -585,6 +599,34 @@ export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
 }
 
+export type UserCreateNestedOneWithoutUserProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserProfileInput, Prisma.UserUncheckedCreateWithoutUserProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserProfileInput, Prisma.UserUncheckedCreateWithoutUserProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserProfileInput
+  upsert?: Prisma.UserUpsertWithoutUserProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserProfileInput, Prisma.UserUpdateWithoutUserProfileInput>, Prisma.UserUncheckedUpdateWithoutUserProfileInput>
+}
+
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
 export type UserCreateNestedOneWithoutAccountsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutAccountsInput, Prisma.UserUncheckedCreateWithoutAccountsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutAccountsInput
@@ -646,6 +688,8 @@ export type UserCreateWithoutNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotesInput = {
@@ -667,6 +711,8 @@ export type UserUncheckedCreateWithoutNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotesInput = {
@@ -693,6 +739,8 @@ export type UserCreateWithoutAuthoredNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAuthoredNotesInput = {
@@ -714,6 +762,8 @@ export type UserUncheckedCreateWithoutAuthoredNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAuthoredNotesInput = {
@@ -740,6 +790,8 @@ export type UserCreateWithoutPatientNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPatientNotesInput = {
@@ -761,6 +813,8 @@ export type UserUncheckedCreateWithoutPatientNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPatientNotesInput = {
@@ -798,6 +852,8 @@ export type UserUpdateWithoutNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotesInput = {
@@ -819,6 +875,8 @@ export type UserUncheckedUpdateWithoutNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutAuthoredNotesInput = {
@@ -851,6 +909,8 @@ export type UserUpdateWithoutAuthoredNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuthoredNotesInput = {
@@ -872,6 +932,8 @@ export type UserUncheckedUpdateWithoutAuthoredNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutPatientNotesInput = {
@@ -904,6 +966,8 @@ export type UserUpdateWithoutPatientNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPatientNotesInput = {
@@ -925,6 +989,224 @@ export type UserUncheckedUpdateWithoutPatientNotesInput = {
   deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserProfileInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserProfileInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserProfileInput, Prisma.UserUncheckedCreateWithoutUserProfileInput>
+}
+
+export type UserUpsertWithoutUserProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserProfileInput, Prisma.UserUncheckedUpdateWithoutUserProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserProfileInput, Prisma.UserUncheckedCreateWithoutUserProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserProfileInput, Prisma.UserUncheckedUpdateWithoutUserProfileInput>
+}
+
+export type UserUpdateWithoutUserProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  role?: $Enums.UserRole
+  hashedPassword?: string | null
+  lockedAt?: Date | string | null
+  lockedReason?: string | null
+  scheduledDeletionAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedCreateNestedManyWithoutUserInput
+  notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
+  patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
+  authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+}
+
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  hashedPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lockedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledDeletionAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  deletionConfirmations?: Prisma.DeletionConfirmationUncheckedUpdateManyWithoutUserNestedInput
+  notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
+  patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
+  authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -946,6 +1228,8 @@ export type UserCreateWithoutAccountsInput = {
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -967,6 +1251,8 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -1004,6 +1290,8 @@ export type UserUpdateWithoutAccountsInput = {
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -1025,6 +1313,8 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -1046,6 +1336,8 @@ export type UserCreateWithoutSessionsInput = {
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1067,6 +1359,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1104,6 +1398,8 @@ export type UserUpdateWithoutSessionsInput = {
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1125,6 +1421,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDeletionConfirmationsInput = {
@@ -1146,6 +1444,8 @@ export type UserCreateWithoutDeletionConfirmationsInput = {
   notes?: Prisma.PatientNoteCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDeletionConfirmationsInput = {
@@ -1167,6 +1467,8 @@ export type UserUncheckedCreateWithoutDeletionConfirmationsInput = {
   notes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutPatientInput
   patientNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutUserInput
   authoredNotes?: Prisma.PatientNoteUncheckedCreateNestedManyWithoutAuthorInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDeletionConfirmationsInput = {
@@ -1204,6 +1506,8 @@ export type UserUpdateWithoutDeletionConfirmationsInput = {
   notes?: Prisma.PatientNoteUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeletionConfirmationsInput = {
@@ -1225,6 +1529,8 @@ export type UserUncheckedUpdateWithoutDeletionConfirmationsInput = {
   notes?: Prisma.PatientNoteUncheckedUpdateManyWithoutPatientNestedInput
   patientNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutUserNestedInput
   authoredNotes?: Prisma.PatientNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1239,6 +1545,7 @@ export type UserCountOutputType = {
   notes: number
   patientNotes: number
   authoredNotes: number
+  notifications: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1248,6 +1555,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   notes?: boolean | UserCountOutputTypeCountNotesArgs
   patientNotes?: boolean | UserCountOutputTypeCountPatientNotesArgs
   authoredNotes?: boolean | UserCountOutputTypeCountAuthoredNotesArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
 }
 
 /**
@@ -1302,6 +1610,13 @@ export type UserCountOutputTypeCountAuthoredNotesArgs<ExtArgs extends runtime.Ty
   where?: Prisma.PatientNoteWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1323,6 +1638,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   notes?: boolean | Prisma.User$notesArgs<ExtArgs>
   patientNotes?: boolean | Prisma.User$patientNotesArgs<ExtArgs>
   authoredNotes?: boolean | Prisma.User$authoredNotesArgs<ExtArgs>
+  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1382,6 +1699,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   notes?: boolean | Prisma.User$notesArgs<ExtArgs>
   patientNotes?: boolean | Prisma.User$patientNotesArgs<ExtArgs>
   authoredNotes?: boolean | Prisma.User$authoredNotesArgs<ExtArgs>
+  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1396,6 +1715,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     notes: Prisma.$PatientNotePayload<ExtArgs>[]
     patientNotes: Prisma.$PatientNotePayload<ExtArgs>[]
     authoredNotes: Prisma.$PatientNotePayload<ExtArgs>[]
+    userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1811,6 +2132,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   notes<T extends Prisma.User$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   patientNotes<T extends Prisma.User$patientNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$patientNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   authoredNotes<T extends Prisma.User$authoredNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$authoredNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PatientNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userProfile<T extends Prisma.User$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2382,6 +2705,49 @@ export type User$authoredNotesArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.PatientNoteScalarFieldEnum | Prisma.PatientNoteScalarFieldEnum[]
+}
+
+/**
+ * User.userProfile
+ */
+export type User$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserProfile
+   */
+  select?: Prisma.UserProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserProfile
+   */
+  omit?: Prisma.UserProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserProfileInclude<ExtArgs> | null
+  where?: Prisma.UserProfileWhereInput
+}
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
 }
 
 /**
